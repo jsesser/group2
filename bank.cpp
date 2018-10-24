@@ -38,15 +38,13 @@ bool Bank::validChapter(int c){
 	return 0;
 }
 
-int* Bank::takeQuestion(int c, int n){
+int Bank::takeQuestion(int c, int n){
 
 	int j=0;
 	bool finished = 0;
-	int* results = new int[2];
+	int results = 0;
 	string tmp;
 	bool inloop = 1;
-	results[0] = 0;	
-	results[1] = 0;	
 
 	for(int i=0; i<questions.size(); i++){
 
@@ -69,11 +67,10 @@ int* Bank::takeQuestion(int c, int n){
 					// only accept 1-5 as valid input
 					// add feature to count the number of answers and check the real value...
 					if(ti>0 && ti<6){
-							results[0]++;
 							inloop = 0;
 							if(questions[i].check(ti)){
 								cout << "correct " << endl;
-								results[1]++;		
+								results++;		
 							}	
 					}
 			} while (inloop);			

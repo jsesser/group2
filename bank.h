@@ -27,7 +27,7 @@ class Bank {
 
 	public:
     Bank();
-	int* takeQuestion(int c, int n);
+	int takeQuestion(int c, int n);
 	void printChapters();
 	bool validChapter(int c);
 };

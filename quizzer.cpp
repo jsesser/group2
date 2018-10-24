@@ -15,7 +15,8 @@ using namespace std;
 int main () {
 
   int total_questions=0;
-  int correct_questions = 0;
+  //int correct_questions = 0;
+  int correct_answers = 0;
   int questions_to_take = 0;
   vector <int> Chapters;
   string tmp;
@@ -56,9 +57,22 @@ int main () {
 
   } while (inloop); 
 
+
   for(int i=0; i<Chapters.size(); i++){
-  	mainbank.takeQuestion(Chapters[i],questions_to_take);
+  	correct_answers += mainbank.takeQuestion(Chapters[i],questions_to_take);
+	total_questions++;
   }
+	cout << "Total questions: " << total_questions << "  Correct answers: " << correct_answers << endl;
+
+	float score = 0;
+	if(correct_answers > 0){
+			score = (total_questions / correct_answers) * 100;
+	}
+	if(correct_answers == total_questions){
+			score = 100;
+	}	
+
+	cout << endl << "Final Score: " << score << "%" << endl;
 
 /*
   do {
