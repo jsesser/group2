@@ -10,12 +10,29 @@
 using namespace std;
 
 
-	void printQuizes(){
+/*oldquiz::oldquiz(){
+	ifstream infile;
+	infile.open("oldquiz.txt");
+	string line;
 
-		ifstream infile;
-		infile.open("oldquiz.txt");
-		string line;
+}*/
 
+	void oldquiz::printQuizes(){
+
+	ifstream infile;
+	infile.open("oldquiz.txt");
+	string line;
+	regex c("([0-9])");	
+	smatch match;
+
+		while(getline(infile,line)){
+			const string s = line;
+
+				 while(regex_search(s, match, c)) {
+						cout << match[0] << endl;
+			}
+
+		}	
 
 	}
 
