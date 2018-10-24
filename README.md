@@ -1,7 +1,7 @@
 # group2
 
 To compile with g++:
-g++ -std=c++0x quizzer.cpp bank.cpp -o quiz
+simply type 'make'. 'quiz' will be produced from makefile. To clean type 'make clean'
 
 quizzer.cpp - main
 bank.cpp .h - quizbank generation and question handling 
