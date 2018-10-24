@@ -1,0 +1,92 @@
+CHAPTER 2
+
+1
+Which of the items listed below is not one of the software engineering layers?
+Process
+Manufacturing
+Methods
+Tools
+2
+
+2
+Software engineering umbrella activities are only applied during the initial phases of software development projects.
+True
+False
+A2
+
+3
+Which of these are the 5 generic software engineering framework activities?
+communication, planning, modeling, construction, deployment
+communication, risk management, measurement, production, reviewing
+analysis, designing, programming, debugging, maintenance
+analysis, planning, designing, programming, testing
+A1
+
+4
+Planning ahead for software reuse reduces the cost and increases the value of the systems into which they are incorporated.
+True
+False
+A1
+
+5
+The essence of software engineering practice might be described as understand the problem, plan a solution, carry out the plan, and examine the result for accuracy.
+True
+False
+A1
+
+6
+In agile process models the only deliverable work product is the working program.
+True
+False
+A1
+
+7
+A most software development projects are initiated to try to meet some business need.
+True
+False
+A1
+
+8
+In general software only succeeds if its behavior is consistent with the objectives of its designers.
+True
+False
+A2
+
+CHAPTER 3
+
+1
+Which of the following are recognized process flow types?
+Concurrent process flow
+Iterative process flow
+Linear process flow
+Spiral process flow
+both b and c
+A5
+
+2 
+The communication activity is best handled for small projects using six distinct actions (inception, elicitation, elaboration, negotiation, specification, validation).
+True
+False
+A2
+
+3 
+A good software development team always uses the same task set for every project to insure high quality work products
+True
+False
+A2
+
+4 
+Software processes can be constructed out of pre-existing software patterns to best meet the needs of a software project.
+True
+False
+A1
+
+5 
+Which of these are standards for assessing software processes?
+SEI
+SPICE
+ISO 9000
+ISO 9001
+both b and d
+A5
+
