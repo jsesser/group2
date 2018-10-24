@@ -58,7 +58,7 @@ int main () {
   } while (inloop); 
 
 
-  for(int i=0; i<=Chapters.size(); i++){
+  for(int i=0; i<Chapters.size(); i++){
   	correct_answers += mainbank.takeQuestion(Chapters[i],questions_to_take);
 	total_questions++;
   }
