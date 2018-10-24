@@ -40,6 +40,9 @@ int main () {
 	//cout << "tmp is: " << tmp << endl;
   } while (tmp != "e");	
 
+  if(Chapters.size() > 0) 
+{
+  cout << "Chapters.size() = " << Chapters.size() << endl;
   // number of questions selector
   cout << "Please select number of questions from each chapter " << endl;
 
@@ -56,7 +59,7 @@ int main () {
 	}
 
   } while (inloop); 
-
+}
 
   for(int i=0; i<Chapters.size(); i++){
   	correct_answers += mainbank.takeQuestion(Chapters[i],questions_to_take);
@@ -67,12 +70,16 @@ int main () {
 	float score = 0;
 	if(correct_answers > 0){
 			score = (total_questions / correct_answers) * 100;
+            cout << endl << "Final Score: " << score << "%" << endl;
 	}
-	if(correct_answers == total_questions){
+	if((correct_answers == total_questions) && total_questions > 0){
 			score = 100;
+            cout << endl << "Final Score: " << score << "%" << endl;
 	}	
-
-	cout << endl << "Final Score: " << score << "%" << endl;
+    if((correct_answers == total_questions) && total_questions == 0){
+			score = 0;
+            cout << endl << "NO QUIZ WAS TAKEN" << endl;
+	}	
 
 /*
   do {
