@@ -1,6 +1,6 @@
-all: quizzer
+all: quiz
 
-quiz: quizzer.o
+quiz: quiz.o
 	g++ -std=c++0x quizzer.cpp bank.cpp -o quiz	
 	
 clean:
