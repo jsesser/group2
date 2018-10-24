@@ -22,10 +22,11 @@ class Question {
 };
 
 class Bank {
+    public:
 	vector <Question> questions;
 	vector <int> Chapters;
 
-	public:
+	
     Bank();
 	int takeQuestion(int c, int n);
 	void printChapters();
