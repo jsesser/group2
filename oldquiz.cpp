@@ -94,7 +94,7 @@ bool oldquiz::doesQuizExist(int c[], int total_chapters, int questions_to_take){
 
 					for(int j=0; j<total_chapters; j++){
 						if(quizholders[i].Chapters[j] != c[j]){
-							cout << quizholders[i].Chapters[j] << " not equal to " << c[j] << endl;
+							//cout << quizholders[i].Chapters[j] << " not equal to " << c[j] << endl;
 							test = 0;
 						}
 					if(!test){continue;}

@@ -76,7 +76,9 @@ if(custom_quiz){
 				cout << "added Chapter " << tmp << endl;
 			}
 	}else{
-			cout << tmp << " is an invalid chapter number" << endl;
+			if(tmp != "e"){
+				cout << tmp << " is an invalid chapter number" << endl;
+			}
 	}
   } while (tmp != "e");	
 
@@ -86,20 +88,25 @@ if(custom_quiz){
   // number of questions selector
   cout << "Please select number of questions from each chapter " << endl;
 
-  inloop = 1;
-  do {
-	cout << ": ";
-	cin >> tmp;
+  	inloop = 1;
+  	do {
+		cout << ": ";
+		cin >> tmp;
 
-	int ti = atoi(tmp.c_str());
+		int ti = atoi(tmp.c_str());
 
-	// only accept 1-99 as valid input
-	if(ti>0 && ti<100){
-		questions_to_take = ti;
-		inloop = 0;
-	}
-  } while (inloop); 
-}
+		// only accept 1-99 as valid input
+		// this needs the real range
+		if(ti>0 && ti<100){
+			questions_to_take = ti;
+			inloop = 0;
+		}
+  	} while (inloop); 
+  }
+
+  // do not allow tests to be taken out of chapter order
+  sort(Chapters.begin(),Chapters.end());
+
 
 } ///// END if custom_quiz
 
@@ -117,30 +124,31 @@ if(!custom_quiz){
 	ti = atoi(tmp.c_str());
 
 	// only accept 1-99 as valid input
+	// needs to be fixed to actually know valid quiz IDs
 	if(ti>0 && ti<100){
 		questions_to_take = ti;
 		inloop = 0;
 		}
   	} while (inloop); 
 
+	
 	ti--;
-	cout << Oldquiz.quizholders[ti].getQnumber() << endl;
+	questions_to_take = Oldquiz.quizholders[ti].getQnumber();
 
+	// copy the chapter vector from the old quizes
+	Chapters = Oldquiz.quizholders[ti].Chapters;
 
-	return 0;
 }// end predefined quiz picker
 
 
 
-
+cout << "questions_to_take is " << questions_to_take << endl;
 
 // this for loop is the gives the entire quiz
   for(int i=0; i<Chapters.size(); i++){
   	correct_answers += mainbank.takeQuestion(Chapters[i],questions_to_take);
-	total_questions++;
+	total_questions += questions_to_take;
   }
-
-
 
 
 // calculate score
@@ -148,20 +156,51 @@ if(!custom_quiz){
 
 	float score = 0;
 	if(correct_answers > 0){
-			score = (total_questions / correct_answers) * 100;
+			score = ((float)correct_answers / (float)total_questions) * 100;
             cout << endl << "Final Score: " << score << "%" << endl;
 	}
 	if(correct_answers == 0){
             cout << endl << "Final Score: 0%" << endl;
 	}
-	if((correct_answers == total_questions) && total_questions > 0){
-			score = 100;
-            cout << endl << "Final Score: " << score << "%" << endl;
-	}	
+//	if((correct_answers == total_questions) && total_questions > 0){
+//			score = 100;
+//            cout << endl << "Final Score: " << score << "%" << endl;
+//  }	
     if((correct_answers == total_questions) && total_questions == 0){
 			score = 0;
             cout << endl << "NO QUIZ WAS TAKEN" << endl;
 	}	
+// done with scoring
+
+
+// save quiz if it was a custom one
+if(custom_quiz){
+	cout << "\n\nWould you like to save this quiz format for a future attempt?" << endl;
+
+	int save_quiz_answer = 0; 
+	int ti = 0;
+
+	inloop = 1;
+    do {
+    cout << "1. Yes" << endl << "2. No" << endl << ": ";
+    cin >> tmp;
+
+    ti = atoi(tmp.c_str());
+
+    // only accept 1-99 as valid input
+    // needs to be fixed to actually know valid quiz IDs
+    if(ti>0 && ti<3){
+        save_quiz_answer = ti;
+        inloop = 0;
+        }
+    } while (inloop);
+
+	// save quiz. Conver chapters to an array reference
+	Oldquiz.saveQuiz(&Chapters[0],Chapters.size(),questions_to_take);
+
+}
+
+
 
   return 0;
 }
