@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <iterator>
 #include "bank.h"
+#include "oldquiz.h"
 using namespace std;
 
 
@@ -21,11 +22,38 @@ int main () {
   vector <int> Chapters;
   string tmp;
   bool inloop = 1;
+  bool custom_quiz = 1;
 
+  // build bank of questions and old quiz formats
   Bank mainbank;
-  mainbank.printChapters();
- 
+  oldquiz Oldquiz;
+
+  cout << "Would you like to take a predefined quiz or design your own?" << endl;
+  cout << "1. Predefined " << endl; 
+  cout << "2. Design my own " << endl; 
+
+  inloop = 1;
+  do{
+	cin >> tmp;
+	if(atoi(tmp.c_str()) == 1){
+		custom_quiz = 0;
+		inloop = 0;
+	}
+	else if(atoi(tmp.c_str()) == 2){
+		inloop = 0;
+	}else{
+		cout << "Invalid response, please try again." << endl;
+	}
+  }
+  while(inloop);
+// done with selection of quiz type
+
+
+
+// build quiz if that was the option picked
+if(custom_quiz){ 
   // chapter selector 
+  mainbank.printChapters();
   cout << "Please select chapters " << endl;
 
   do {
@@ -52,12 +80,13 @@ int main () {
 	}
   } while (tmp != "e");	
 
-  if(Chapters.size() > 0) 
-{
-  cout << "Chapters.size() = " << Chapters.size() << endl;
+  if(Chapters.size() > 0){
+
+  //cout << "Chapters.size() = " << Chapters.size() << endl;
   // number of questions selector
   cout << "Please select number of questions from each chapter " << endl;
 
+  inloop = 1;
   do {
 	cout << ": ";
 	cin >> tmp;
@@ -69,20 +98,61 @@ int main () {
 		questions_to_take = ti;
 		inloop = 0;
 	}
-
   } while (inloop); 
 }
 
+} ///// END if custom_quiz
+
+/// time to pick and build a predefined quiz
+if(!custom_quiz){
+
+	Oldquiz.printQuizes();
+	int ti;
+  
+	inloop = 1;
+  	do {
+	cout << "Quiz ID: ";
+	cin >> tmp;
+
+	ti = atoi(tmp.c_str());
+
+	// only accept 1-99 as valid input
+	if(ti>0 && ti<100){
+		questions_to_take = ti;
+		inloop = 0;
+		}
+  	} while (inloop); 
+
+	ti--;
+	cout << Oldquiz.quizholders[ti].getQnumber() << endl;
+
+
+	return 0;
+}// end predefined quiz picker
+
+
+
+
+
+// this for loop is the gives the entire quiz
   for(int i=0; i<Chapters.size(); i++){
   	correct_answers += mainbank.takeQuestion(Chapters[i],questions_to_take);
 	total_questions++;
   }
-	cout << "Total questions: " << total_questions << "  Correct answers: " << correct_answers << endl;
+
+
+
+
+// calculate score
+	cout << "\n\nTotal questions: " << total_questions << "  Correct answers: " << correct_answers << endl;
 
 	float score = 0;
 	if(correct_answers > 0){
 			score = (total_questions / correct_answers) * 100;
             cout << endl << "Final Score: " << score << "%" << endl;
+	}
+	if(correct_answers == 0){
+            cout << endl << "Final Score: 0%" << endl;
 	}
 	if((correct_answers == total_questions) && total_questions > 0){
 			score = 100;
