@@ -105,6 +105,7 @@ if(custom_quiz){
   }
 
   // do not allow tests to be taken out of chapter order
+  // this sort also ensures that the save file will always have chapters in order
   sort(Chapters.begin(),Chapters.end());
 
 

@@ -53,7 +53,7 @@ oldquiz::oldquiz(){
 void oldquiz::saveQuiz(int c[], int total_chapters, int questions_to_take){
 
 	if(doesQuizExist(c, total_chapters, questions_to_take)){
-		//cout << "quiz already exists! \n";
+		cout << "This quiz format already exists as a saved format.\n";
 	}else{
 		//cout << "need to write quiz to file \n";
 
@@ -85,7 +85,6 @@ void oldquiz::saveQuiz(int c[], int total_chapters, int questions_to_take){
 }
 
 bool oldquiz::doesQuizExist(int c[], int total_chapters, int questions_to_take){
-
 
 		for(int i=0; i<quizholders.size(); i++){
 			if(quizholders[i].getQnumber() == questions_to_take){
