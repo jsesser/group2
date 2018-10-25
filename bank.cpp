@@ -87,7 +87,7 @@ Bank::Bank(){
 
 	// if an answer starts with a number, this could cause a problem
 	regex n("^([0-9]+)");
-	regex c("^CHAPTER ([0-9])");
+	regex c("^CHAPTER ([0-9]+)");
 	regex a("^A([0-9])+");
 
 	Question q;

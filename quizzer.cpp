@@ -33,11 +33,23 @@ int main () {
 	cin >> tmp;
 
   	if(mainbank.validChapter(atoi(tmp.c_str()))){
-		// need check here to not add already added chapters
-		Chapters.push_back(atoi(tmp.c_str()));
-		cout << "added chapter " << tmp << endl;
+
+		// only add chapters that have not been added yet 
+		bool isUnique = 1;
+		for(int i=0; i<Chapters.size(); i++){
+			if(Chapters[i] == atoi(tmp.c_str())){
+				cout << "Chapter " << tmp << " has already been added" << endl;
+				isUnique = 0;
+				continue;
+			}
+		}
+			if(isUnique){
+				Chapters.push_back(atoi(tmp.c_str()));
+				cout << "added Chapter " << tmp << endl;
+			}
+	}else{
+			cout << tmp << " is an invalid chapter number" << endl;
 	}
-	//cout << "tmp is: " << tmp << endl;
   } while (tmp != "e");	
 
   if(Chapters.size() > 0) 
@@ -80,37 +92,6 @@ int main () {
 			score = 0;
             cout << endl << "NO QUIZ WAS TAKEN" << endl;
 	}	
-
-/*
-  do {
-    cout << "Enter e to end: ";
-    cin >> tc;
-  	if(mainbank.validChapter(tc)){
-		Chapters.push_back(tc);
-		cout << tc << " added" << endl;
-  	}else{
-		cout << tc << " not valid" << endl;
-  	}
-  } while (tc != 0);
-  
-  cout << "How many questions from each chapter " << endl;
-
-*/
-
- // mainbank.takeQuestion(2,14);
-
-/*
-  Question one;
-  one.setup("Which of the items listed below is not one of the software engineering layers?");
-
-  one.addAns("Process");
-  one.addAns("Manufacturing");
-  one.addAns("Methods");
-  one.addAns("Tools");
- */ 
-
-//  cout << one.retQuestion() << endl << endl;
-//  one.printAnswers();
 
   return 0;
 }

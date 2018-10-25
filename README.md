@@ -8,3 +8,6 @@ To clean:
 
 quizzer.cpp - main
 bank.cpp .h - quizbank generation and question handling 
+
+
+quizfile.text - space delimited list of chapters, followed by number of questions, and terminated with an id number
