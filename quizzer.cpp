@@ -197,11 +197,11 @@ if(custom_quiz){
         }
     } while (inloop);
 
+    if(save_quiz_answer == 1){
 	// save quiz. Conver chapters to an array reference
 	Oldquiz.saveQuiz(&Chapters[0],Chapters.size(),questions_to_take);
-    
     cout << "Your ID for this quiz is " << Oldquiz.getNextID() << ". Please take note of this value, you will use it to take this quiz again in the future." << endl;
-    
+    }
 
 
 }
