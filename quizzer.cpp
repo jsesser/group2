@@ -54,7 +54,6 @@ int main () {
 // build quiz if that was the option picked
 if(custom_quiz){ 
   // chapter selector 
-  cout << "Your ID for this quiz is " << Oldquiz.getNextID() << ". Please take note of this value, you will use it to take this quiz again in the future." << endl;
   mainbank.printChapters();
   cout << "Please select chapters " << endl;
 
@@ -200,6 +199,8 @@ if(custom_quiz){
 
 	// save quiz. Conver chapters to an array reference
 	Oldquiz.saveQuiz(&Chapters[0],Chapters.size(),questions_to_take);
+    
+    cout << "Your ID for this quiz is " << Oldquiz.getNextID() << ". Please take note of this value, you will use it to take this quiz again in the future." << endl;
     
 
 
