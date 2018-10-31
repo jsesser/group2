@@ -27,7 +27,7 @@ int main () {
   // build bank of questions and old quiz formats
   Bank mainbank;
   oldquiz Oldquiz;
-  quizholder saved_test_ID; 
+   
    
   cout << "Would you like to take a predefined quiz or design your own?" << endl;
   cout << "1. Predefined " << endl; 
@@ -54,7 +54,7 @@ int main () {
 // build quiz if that was the option picked
 if(custom_quiz){ 
   // chapter selector 
-  cout << "Your ID for this quiz is " << saved_test_ID.getID() << ". Please take note of this value, you will use it to take this quiz again in the future." << endl;
+  cout << "Your ID for this quiz is " << Oldquiz.get_highest_ID() << ". Please take note of this value, you will use it to take this quiz again in the future." << endl;
   mainbank.printChapters();
   cout << "Please select chapters " << endl;
 
