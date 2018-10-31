@@ -119,5 +119,9 @@ void oldquiz::printQuizes(){
 		}
 		cout << "\n\n";
 	}
+    
+int oldquiz::get_highest_ID() {
+    return highestID;
+}
 
 
