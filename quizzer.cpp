@@ -31,6 +31,7 @@ int main () {
   cout << "Would you like to take a predefined quiz or design your own?" << endl;
   cout << "1. Predefined " << endl; 
   cout << "2. Design my own " << endl; 
+  cout << ":"; 
 
   inloop = 1;
   do{
@@ -86,7 +87,7 @@ if(custom_quiz){
 
   //cout << "Chapters.size() = " << Chapters.size() << endl;
   // number of questions selector
-  cout << "Please select number of questions from each chapter " << endl;
+  cout << "Please select number of questions from each chapter" << endl;
 
   	inloop = 1;
   	do {
@@ -100,6 +101,8 @@ if(custom_quiz){
 		if(ti>0 && ti<100){
 			questions_to_take = ti;
 			inloop = 0;
+		}else{
+			cout << tmp << " is an invalid number of questions selection" << endl;
 		}
   	} while (inloop); 
   }
@@ -124,11 +127,11 @@ if(!custom_quiz){
 
 	ti = atoi(tmp.c_str());
 
-	// only accept 1-99 as valid input
-	// needs to be fixed to actually know valid quiz IDs
-	if(ti>0 && ti<100){
+	if(ti>0 && ti<Oldquiz.getNextID()){
 		questions_to_take = ti;
 		inloop = 0;
+		}else{
+			cout << tmp << " is an invalid quiz selection" << endl;
 		}
   	} while (inloop); 
 
@@ -163,11 +166,7 @@ cout << "questions_to_take is " << questions_to_take << endl;
 	if(correct_answers == 0){
             cout << endl << "Final Score: 0%" << endl;
 	}
-//	if((correct_answers == total_questions) && total_questions > 0){
-//			score = 100;
-//            cout << endl << "Final Score: " << score << "%" << endl;
-//  }	
-    if((correct_answers == total_questions) && total_questions == 0){
+    	if((correct_answers == total_questions) && total_questions == 0){
 			score = 0;
             cout << endl << "NO QUIZ WAS TAKEN" << endl;
 	}	
