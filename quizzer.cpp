@@ -27,7 +27,8 @@ int main () {
   // build bank of questions and old quiz formats
   Bank mainbank;
   oldquiz Oldquiz;
-
+   
+   
   cout << "Would you like to take a predefined quiz or design your own?" << endl;
   cout << "1. Predefined " << endl; 
   cout << "2. Design my own " << endl; 
@@ -195,8 +196,12 @@ if(custom_quiz){
         }
     } while (inloop);
 
+    if(save_quiz_answer == 1){
 	// save quiz. Conver chapters to an array reference
 	Oldquiz.saveQuiz(&Chapters[0],Chapters.size(),questions_to_take);
+    cout << "Your ID for this quiz is " << Oldquiz.getNextID() << ". Please take note of this value, you will use it to take this quiz again in the future." << endl;
+    }
+
 
 }
 
